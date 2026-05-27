@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <title>Woorden Quiz 🎭</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- START SCREEN -->
+    <section id="start-screen" class="screen active">
+      <div class="hero">
+        <div class="emoji-row">🎭 🎬 📚</div>
+        <h1>Woorden Quiz</h1>
+        <p class="subtitle">Theater &amp; Film woordenschat</p>
+        <p class="highscore" id="highscore-line"></p>
+        <button class="btn-primary" id="btn-start">Start! 🚀</button>
+      </div>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section id="quiz-screen" class="screen">
+      <header class="top-bar">
+        <div class="progress">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="stats">
+          <span id="question-count">1 / 40</span>
+          <span class="score">⭐ <span id="score">0</span></span>
+        </div>
+      </header>
+
+      <main class="quiz-body">
+        <div class="word-card" id="word-card">
+          <span class="word-label">Wat betekent...</span>
+          <h2 id="word-text">—</h2>
+        </div>
+
+        <div class="answers" id="answers"></div>
+      </main>
+    </section>
+
+    <!-- END SCREEN -->
+    <section id="end-screen" class="screen">
+      <div class="hero end-hero">
+        <div class="trophy" id="trophy">🏆</div>
+        <h1 id="end-title">Klaar!</h1>
+        <p class="end-score">Je had <strong id="final-score">0</strong> van de <strong id="final-total">0</strong> goed</p>
+        <div class="stars" id="stars"></div>
+        <p class="highscore" id="end-highscore"></p>
+        <button class="btn-primary" id="btn-again">Nog een keer! 🔁</button>
+      </div>
+      <canvas id="confetti"></canvas>
+    </section>
+
+  </div>
+
+  <script src="words.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
