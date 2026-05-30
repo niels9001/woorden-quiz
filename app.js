@@ -126,11 +126,11 @@ function renderQuestion() {
   const current = state.queue[state.index];
 
   // 3 random wrong options from all other words
-  const others = WORDS.filter(w => w.omschrijving !== current.omschrijving);
+  const others = WORDS.filter(w => w.woord !== current.woord);
   const wrongs = shuffle(others).slice(0, 3);
   const options = shuffle([current, ...wrongs]);
 
-  els.wordText.textContent = current.woord;
+  els.wordText.textContent = current.omschrijving;
   els.wordCard.style.animation = 'none';
   void els.wordCard.offsetWidth;
   els.wordCard.style.animation = '';
@@ -140,7 +140,7 @@ function renderQuestion() {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.dataset.letter = LETTERS[i];
-    btn.textContent = opt.omschrijving;
+    btn.textContent = opt.woord;
     btn.addEventListener('click', () => handleAnswer(btn, opt, current));
     els.answers.appendChild(btn);
   });
@@ -159,7 +159,7 @@ function handleAnswer(btn, chosen, correct) {
   const buttons = els.answers.querySelectorAll('.answer-btn');
   buttons.forEach(b => { b.disabled = true; });
 
-  if (chosen.omschrijving === correct.omschrijving) {
+  if (chosen.woord === correct.woord) {
     btn.classList.add('correct');
     state.score++;
     els.score.textContent = state.score;
@@ -169,7 +169,7 @@ function handleAnswer(btn, chosen, correct) {
     soundWrong();
     // reveal correct one
     buttons.forEach(b => {
-      if (b.textContent === correct.omschrijving) b.classList.add('correct');
+      if (b.textContent === correct.woord) b.classList.add('correct');
       else if (b !== btn) b.classList.add('dimmed');
     });
   }
